@@ -38,3 +38,40 @@ Features used:
 ---
 
 ## 🏗️ Architecture
+
+---
+
+## 📷 Screenshots
+
+### Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+### Stock Chart
+
+![Chart](screenshots/chart.png)
+
+---
+
+## 🛠️ Tech Stack
+
+Frontend
+- HTML
+- CSS
+- JavaScript
+- TradingView Lightweight Charts
+
+Backend
+- Python
+- Flask
+- Pandas
+- Scikit-learn
+
+Data
+- Yahoo Finance API
+
+---
+
+## ⚙️ Installation
+
+Clone the repository
