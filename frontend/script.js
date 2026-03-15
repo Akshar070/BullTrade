@@ -35,7 +35,7 @@ LightweightCharts.HistogramSeries,
 
 function loadChart(stock,range){
 
-fetch(`http://127.0.0.1:5000/history/${stock}/${range}`)
+fetch(`https://bulltrade-nqsk.onrender.com/${stock}/${range}`)
 .then(res=>res.json())
 .then(data=>{
 
@@ -62,7 +62,7 @@ currentStock=stock
 
 document.getElementById("stockTitle").innerText=stock
 
-fetch(`http://127.0.0.1:5000/predict/${stock}`)
+fetch(`https://bulltrade-nqsk.onrender.com/predict/${stock}`)
 .then(res=>res.json())
 .then(data=>{
 
@@ -105,7 +105,7 @@ loadStock(stock)
 
 function loadMarket(){
 
-fetch("http://127.0.0.1:5000/market")
+fetch("https://bulltrade-nqsk.onrender.com/market")
 .then(res=>res.json())
 .then(data=>{
 
@@ -134,7 +134,7 @@ list.appendChild(li)
 
 function loadHeatmap(){
 
-fetch("http://127.0.0.1:5000/market")
+fetch("https://bulltrade-nqsk.onrender.com/market")
 .then(res=>res.json())
 .then(data=>{
 
