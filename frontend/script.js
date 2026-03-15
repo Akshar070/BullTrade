@@ -1,5 +1,5 @@
 // API BASE URL
-const API = "https://bulltrade-nqsk.onrender.com"
+const API = "https://bulltrade-api.onrender.com"
 
 let priceChart
 let volumeChart
