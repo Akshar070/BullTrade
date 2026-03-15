@@ -7,8 +7,9 @@ let volumeSeries
 let currentStock = "RELIANCE.NS"
 
 
-function initCharts(){
-
+function initCharts()
+{
+const API = "https://bulltrade-api.onrender.com"
 const container = document.getElementById("chart")
 
 priceChart = LightweightCharts.createChart(container,{
@@ -35,7 +36,7 @@ LightweightCharts.HistogramSeries,
 
 function loadChart(stock,range){
 
-fetch(`https://bulltrade-api.onrender.com/${stock}/${range}`)
+fetch(`${API}/${stock}/${range}`)
 .then(res=>res.json())
 .then(data=>{
 
@@ -62,7 +63,7 @@ currentStock=stock
 
 document.getElementById("stockTitle").innerText=stock
 
-fetch(`https://bulltrade-api.onrender.com/predict/${stock}`)
+fetch(`${API}/predict/${stock}`)
 .then(res=>res.json())
 .then(data=>{
 
@@ -105,7 +106,7 @@ loadStock(stock)
 
 function loadMarket(){
 
-fetch("https://bulltrade-api.onrender.com/market")
+fetch(`${API}/market`)
 .then(res=>res.json())
 .then(data=>{
 
