@@ -49,7 +49,7 @@ Features used:
 
 ### Stock Chart
 
-![Chart](screenshots/chart.png)
+![Chart](screenshots/charts.png)
 
 ---
 
