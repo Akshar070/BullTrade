@@ -3,6 +3,7 @@ import os
 from flask import Flask, jsonify
 from flask_cors import CORS
 import yfinance as yf
+from flask import jsonify
 import pandas as pd
 from predict import predict_stock
 
@@ -24,25 +25,30 @@ def predict(stock):
 
 
 # Candlestick + Volume Data
-@app.route("/history/<stock>/<range>")
-def history(stock, range):
+@app.route('/history/<ticker>/<period>')
+def history(ticker, period):
+    try:
+        # 1. Fetch the data
+        stock = yf.Ticker(ticker)
+        hist = stock.history(period=period)
+        
+        # 2. Reset the index so 'Date' becomes a regular column
+        hist = hist.reset_index()
+        
+        # 3. Convert the Pandas Timestamps to standard strings (Crucial Step)
+        if 'Date' in hist.columns:
+            hist['Date'] = hist['Date'].dt.strftime('%Y-%m-%d')
+        elif 'Datetime' in hist.columns: # Sometimes yfinance uses Datetime for shorter periods
+            hist['Datetime'] = hist['Datetime'].dt.strftime('%Y-%m-%d %H:%M:%S')
 
-    data = yf.download(stock, period=range)
+        # 4. Convert to a dictionary and send as JSON
+        # orient='records' makes it a clean list of objects for your frontend
+        return jsonify(hist.to_dict(orient='records'))
 
-    candles = []
-
-    for index,row in data.iterrows():
-
-        candles.append({
-            "time": index.strftime("%Y-%m-%d"),
-            "open": float(row["Open"]),
-            "high": float(row["High"]),
-            "low": float(row["Low"]),
-            "close": float(row["Close"]),
-            "volume": float(row["Volume"])
-        })
-
-    return jsonify(candles)
+    except Exception as e:
+        # This will print the exact error to your Render logs if it fails again
+        print(f"Error fetching history: {e}") 
+        return jsonify({"error": "Failed to fetch stock data"}), 500
 
 
 # Technical Indicators
