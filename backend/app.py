@@ -25,32 +25,24 @@ def predict(stock):
 
 # Candlestick + Volume Data
 @app.route("/history/<stock>/<range>")
-def history(stock,range):
+def history(stock, range):
 
-    try:
+    data = yf.download(stock, period=range)
 
-        data=yf.download(stock,period=range)
+    candles = []
 
-        if data.empty:
-            return jsonify([])
+    for index, row in data.iterrows():
 
-        candles=[]
+        candles.append({
+            "time": index.strftime("%Y-%m-%d"),
+            "open": float(row["Open"]),
+            "high": float(row["High"]),
+            "low": float(row["Low"]),
+            "close": float(row["Close"]),
+            "volume": float(row["Volume"])
+        })
 
-        for index,row in data.iterrows():
-
-            candles.append({
-                "time":index.strftime("%Y-%m-%d"),
-                "open":float(row.Open),
-                "high":float(row.High),
-                "low":float(row.Low),
-                "close":float(row.Close),
-                "volume":float(row.Volume)
-            })
-
-        return jsonify(candles)
-
-    except Exception as e:
-        return jsonify({"error":str(e)})
+    return jsonify(candles)
 
 
 # Technical Indicators

@@ -29,8 +29,8 @@ def predict_stock(stock):
 
     lr_pred = lr_model.predict(features)[0]
     rf_pred = rf_model.predict(features)[0]
-
-    current_price = float(latest['Close'])
+    
+    current_price = float(latest["Close"])
 
     direction = "Rise 📈" if rf_pred > current_price else "Fall 📉"
 
