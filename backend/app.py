@@ -152,6 +152,16 @@ def market():
 
     return jsonify(result)
 
+@app.route("/")
+def home():
+    return {
+        "message": "BullTrade API is running",
+        "endpoints": [
+            "/predict/<stock>",
+            "/history/<stock>/<range>",
+            "/market"
+        ]
+    }
 
 @app.route("/live/<stock>")
 def live_price(stock):
