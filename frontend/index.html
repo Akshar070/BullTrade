@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>ML Stock Price Prediction Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>ML Stock Price Prediction Dashboard</h1>
+
+<input type="text" id="search" placeholder="Search stock (Example: TCS.NS)">
+<button onclick="searchStock()">Search</button>
+
+</header>
+
+
+<div class="dashboard">
+
+<!-- LEFT PANEL -->
+
+<div class="left">
+
+<h2>Stocks</h2>
+
+<button onclick="loadStock('RELIANCE.NS')">Reliance</button>
+<button onclick="loadStock('INFY.NS')">Infosys</button>
+<button onclick="loadStock('TCS.NS')">TCS</button>
+<button onclick="loadStock('HDFCBANK.NS')">HDFC Bank</button>
+
+<h2>Top Movers</h2>
+
+<ul id="market"></ul>
+
+</div>
+
+
+<!-- RIGHT PANEL -->
+
+<div class="right">
+
+<h2 id="stockTitle">Select a Stock</h2>
+
+<div id="prediction"></div>
+
+<div class="timeframes">
+
+<button onclick="setTimeframe('1d')">1D</button>
+<button onclick="setTimeframe('5d')">1W</button>
+<button onclick="setTimeframe('1mo')">1M</button>
+<button onclick="setTimeframe('1y')">1Y</button>
+
+</div>
+
+
+<div class="charts-container">
+
+<div class="chart-panel">
+<h3>Price Chart</h3>
+<div id="chart"></div>
+</div>
+
+<div class="chart-panel">
+<h3>Volume</h3>
+<div id="volumeChart"></div>
+</div>
+
+</div>
+
+
+<h2>NIFTY Heatmap</h2>
+
+<div id="heatmap" class="heatmap-container"></div>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

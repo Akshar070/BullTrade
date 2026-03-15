@@ -1,0 +1,142 @@
+body{
+margin:0;
+font-family:Arial;
+background:#f4f8ff;
+color:#1b61b2;
+}
+
+header{
+background:#193A69;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+header input{
+padding:10px;
+width:220px;
+border-radius:6px;
+border:none;
+margin-right:10px;
+}
+
+header button{
+padding:10px 16px;
+background:#128652;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.dashboard{
+display:flex;
+height:90vh;
+}
+
+.left{
+width:22%;
+background:white;
+padding:20px;
+border-right:1px solid #ddd;
+overflow-y:auto;
+}
+
+.left button{
+display:block;
+width:100%;
+padding:12px;
+margin:8px 0;
+background:#e8f0ff;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.left button:hover{
+background:#cfe0ff;
+}
+
+#market{
+list-style:none;
+padding:0;
+margin-top:10px;
+}
+
+#market li{
+padding:10px;
+border-bottom:1px solid #eee;
+cursor:pointer;
+}
+
+.right{
+width:78%;
+padding:30px;
+overflow-y:auto;
+}
+
+#prediction{
+background:white;
+padding:20px;
+margin-bottom:20px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+.timeframes{
+margin-top:15px;
+margin-bottom:10px;
+}
+
+.timeframes button{
+background:#2f6fed;
+color:white;
+border:none;
+padding:8px 14px;
+margin-right:8px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.charts-container{
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+.chart-panel{
+background:white;
+padding:15px;
+border-radius:10px;
+box-shadow:0 3px 10px rgba(0,0,0,0.08);
+}
+
+#chart{
+width:100%;
+height:400px;
+}
+
+#volumeChart{
+width:100%;
+height:200px;
+}
+
+.heatmap-container{
+display:flex;
+flex-wrap:wrap;
+margin-top:15px;
+}
+
+.heatmap-card{
+width:110px;
+height:80px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+margin:5px;
+border-radius:6px;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
