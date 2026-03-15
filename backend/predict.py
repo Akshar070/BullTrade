@@ -5,7 +5,6 @@ import pandas as pd
 lr_model = joblib.load("models/linear_model.pkl")
 rf_model = joblib.load("models/rf_model.pkl")
 
-
 def predict_stock(stock):
 
     data = yf.download(stock, period="1y")
@@ -20,23 +19,21 @@ def predict_stock(stock):
 
     latest = data.iloc[-1]
 
-    features = [[
-        float(latest["Close"]),
-        float(latest["MA10"]),
-        float(latest["MA50"]),
-        float(latest["Volume"])
-    ]]
+    current_price = float(latest["Close"].item())
+    ma10 = float(latest["MA10"].item())
+    ma50 = float(latest["MA50"].item())
+    volume = float(latest["Volume"].item())
 
-    lr_pred = lr_model.predict(features)[0]
-    rf_pred = rf_model.predict(features)[0]
+    features = [[current_price, ma10, ma50, volume]]
 
-    current_price = float(latest["Close"])
+    lr_pred = float(lr_model.predict(features)[0])
+    rf_pred = float(rf_model.predict(features)[0])
 
     direction = "Rise 📈" if rf_pred > current_price else "Fall 📉"
 
     return {
         "current_price": round(current_price,2),
-        "lr_prediction": round(float(lr_pred),2),
-        "rf_prediction": round(float(rf_pred),2),
+        "lr_prediction": round(lr_pred,2),
+        "rf_prediction": round(rf_pred,2),
         "direction": direction
     }

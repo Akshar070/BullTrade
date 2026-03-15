@@ -31,7 +31,7 @@ def history(stock, range):
 
     candles = []
 
-    for index, row in data.iterrows():
+    for index,row in data.iterrows():
 
         candles.append({
             "time": index.strftime("%Y-%m-%d"),
